@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'cadastro.dart';
+import 'login.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -10,9 +13,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      initialRoute: '/', // Rota inicial
       title: 'Dream Books',
-      home: MyHomePage(title: ''),
+      routes: {
+        '/login': (context) => const LoginPage(), // Rota inicial
+        '/cadastro': (context) => const CadastroPage(), // Rota de cadastro
+      },
+      home: const MyHomePage(title: 'Dream Books'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -62,7 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 40),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/login');
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 207, 176, 166),
                   shape: RoundedRectangleBorder(
@@ -78,7 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/cadastro');
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 207, 176, 166),
                 shape: RoundedRectangleBorder(
