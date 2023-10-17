@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'cadastro.dart';
+import 'home.dart';
 import 'login.dart';
 
 void main() {
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'Dream Books',
       routes: {
         '/login': (context) => const LoginPage(), // Rota inicial
-        '/cadastro': (context) => const CadastroPage(), // Rota de cadastro
+        '/cadastro': (context) => const CadastroPage(), // Rota da cadastro
+        '/home': (context) => const HomePage(), // Rota da home
       },
       home: const MyHomePage(title: 'Dream Books'),
       debugShowCheckedModeBanner: false,

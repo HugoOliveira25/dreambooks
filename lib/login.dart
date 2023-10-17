@@ -5,6 +5,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
@@ -31,7 +33,11 @@ class LoginPage extends StatelessWidget {
                     color: const Color(0xffe4d1ca),
                     child: Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(50),
+                        padding: EdgeInsets.only(
+                            right: 20,
+                            left: 20,
+                            top: 20,
+                            bottom: screenHeight * 0.11),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -123,12 +129,7 @@ class LoginPage extends StatelessWidget {
                             const SizedBox(height: 10.0),
                             ElevatedButton(
                               onPressed: () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content:
-                                        Text('Login realizado com sucesso!'),
-                                  ),
-                                );
+                                Navigator.pushNamed(context, '/home');
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFFB27666),
