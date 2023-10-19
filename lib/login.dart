@@ -114,10 +114,8 @@ class LoginPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(50.0),
                                         borderSide: const BorderSide(
-                                          color: Color(
-                                              0xFFB27666), // Cor da borda quando o campo está em foco
-                                          width:
-                                              2.0, // Espessura da borda quando o campo está em foco
+                                          color: Color(0xFFB27666),
+                                          width: 2.0,
                                         ),
                                       ),
                                     ),
