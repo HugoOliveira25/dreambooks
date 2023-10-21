@@ -60,6 +60,10 @@ flutter:
     - lib/assets/diario_de_um_banana.jpg
     - lib/assets/o_pequeno_principe.jpg
     - lib/assets/turma_da_monica.jpg
+    - lib/assets/credit-card.png
+    - lib/assets/debit-card.png
+    - lib/assets/cash.png
+    - lib/assets/book-cart.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

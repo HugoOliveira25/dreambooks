@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'cadastro.dart';
-import 'home.dart';
-import 'login.dart';
+import 'pages/cadastro_page.dart';
+import 'pages/home_page.dart';
+import 'pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
