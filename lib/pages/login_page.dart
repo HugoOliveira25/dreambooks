@@ -17,6 +17,7 @@ class LoginPage extends StatelessWidget {
     try {
       return await authService.fazerLogin(email, senha);
     } catch (e) {
+      showErrorDialog(context, 'E-mail ou senha inválidos');
       // Lidar com erros de login aqui
       print('Erro durante o login: $e');
       return "";
@@ -183,4 +184,24 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
+
+showErrorDialog(BuildContext context, String errorMessage) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Erro ao logar'),
+        content: Text(errorMessage),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Ok'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
