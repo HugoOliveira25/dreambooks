@@ -1,5 +1,4 @@
 import 'package:dreambooks/models/livro_model.dart';
-import 'package:dreambooks/pages/finalizar_pedido_page.dart';
 import 'package:dreambooks/pages/forma_pagamento_page.dart';
 import 'package:flutter/material.dart';
 
@@ -27,9 +26,10 @@ class FecharPedidoPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 40.0),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 80, right: 80),
-                  child: Image.asset(
-                    livro.imageUrl,
-                  ),
+                  // child: Image.asset(
+                  //   livro.capa,
+                  // ),
+                  child: Text(livro.autor),
                 ),
               ),
               Padding(
@@ -95,38 +95,13 @@ class FecharPedidoPage extends StatelessWidget {
                     ),
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text('Forma de pagamento',
+                  child: const Text('Selecionar forma de pagamento',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       )),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const FinalizarPedidoPage(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFB27666),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    minimumSize: const Size(200, 50),
-                  ),
-                  child: const Text('Finalizar pedido',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      )),
-                ),
-              ),
+              )
             ],
           ),
         ),

@@ -27,9 +27,10 @@ class DetalhesLivroPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 40.0),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 80, right: 80),
-                  child: Image.asset(
-                    livro.imageUrl,
-                  ),
+                  // child: Image.asset(
+                  //   livro.capa,
+                  // ),
+                  child: Text(livro.autor),
                 ),
               ),
               Padding(
@@ -37,7 +38,7 @@ class DetalhesLivroPage extends StatelessWidget {
                 child: ListTile(
                   title: Center(
                       child: Text(
-                    livro.title,
+                    livro.titulo,
                     style: const TextStyle(
                       color: Color(0xFFB27666),
                       fontWeight: FontWeight.bold,
@@ -58,7 +59,7 @@ class DetalhesLivroPage extends StatelessWidget {
                       )),
                       Center(
                           child: Text(
-                        livro.anoPublicacao,
+                        livro.publi,
                         style: const TextStyle(
                           color: Color(0xFFB27666),
                           fontWeight: FontWeight.w400,

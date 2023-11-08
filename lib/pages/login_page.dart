@@ -1,7 +1,27 @@
 import 'package:flutter/material.dart';
 
+import '../services/login_service.dart';
+
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+
+  Future<String> fazerLogin(BuildContext context) async {
+    final String email = emailController.text;
+    final String senha = senhaController.text;
+
+    // Chame o serviço de autenticação aqui
+    final authService = AuthService();
+    try {
+      return await authService.fazerLogin(email, senha);
+    } catch (e) {
+      // Lidar com erros de login aqui
+      print('Erro durante o login: $e');
+      return "";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +84,7 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ),
                                 TextField(
+                                  controller: emailController,
                                   decoration: InputDecoration(
                                     labelText: '',
                                     floatingLabelBehavior:
@@ -101,6 +122,7 @@ class LoginPage extends StatelessWidget {
                                     ),
                                   ),
                                   TextField(
+                                    controller: senhaController,
                                     obscureText: true,
                                     decoration: InputDecoration(
                                       labelText: '',
@@ -126,8 +148,11 @@ class LoginPage extends StatelessWidget {
                             const SizedBox(height: 16.0),
                             const SizedBox(height: 10.0),
                             ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/home');
+                              onPressed: () async {
+                                var token = await fazerLogin(context);
+                                if (token.isNotEmpty) {
+                                  Navigator.pushNamed(context, '/home');
+                                }
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFFB27666),

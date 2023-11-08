@@ -1,13 +1,19 @@
 import 'package:dreambooks/models/livro_model.dart';
+import 'package:dreambooks/services/livro_service.dart';
 import 'package:dreambooks/widgets/genero.dart';
 import 'package:dreambooks/widgets/livro.dart';
 import 'package:flutter/material.dart';
 
 import 'detalhes_livro_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<String> buttonLabels = [
     "ROMANCE",
     "BIOGRAFIA",
@@ -15,56 +21,26 @@ class HomePage extends StatelessWidget {
     "RELIGIOSO"
   ];
 
-  final List<LivroModel> livrosRomance = [
-    LivroModel(
-        title: 'Eu e esse meu coração',
-        imageUrl: 'lib/assets/eu_e_esse_meu_coracao.jpg',
-        autor: 'Hunter, C. C',
-        anoPublicacao: '2018',
-        descricao:
-            'Leah MacKenzie, de 17 anos, não tem coração. O que a mantém viva é um coração artificial que ela carrega dentro de uma mochila. Com seu tipo sanguíneo raro, um transplante é como um sonho distante. Conformada, ela tenta se esquecer de que está com os dias contados, criando uma lista de “coisas para fazer antes de morrer”. De repente, Leah recebe uma segunda chance: há um coração disponível!'),
-    LivroModel(
-        title: 'É assim que acaba',
-        imageUrl: 'lib/assets/e_assim_que_acaba.jpg',
-        autor: 'Collen Hoover',
-        anoPublicacao: '2016',
-        descricao:
-            'Lily, uma jovem que se mudou de uma cidadezinha do Maine para Boston, se formou em marketing e abriu a própria floricultura. E é em um dos terraços de Boston que ela conhece Ryle, um neurocirurgião confiante, teimoso e talvez até um pouco arrogante, com uma grande aversão a relacionamentos, mas que se sente muito atraído por ela. Quando os dois se apaixonam, Lily se vê no meio de um relacionamento turbulento que não é o que ela esperava. Mas será que ela conseguirá enxergar isso, por mais doloroso que seja? É assim que acaba é uma narrativa poderosa sobre a força necessária para fazer as escolhas certas nas situações mais difíceis. Considerada a obra mais pessoal de Hoover, o livro aborda sem medo alguns tabus da sociedade para explorar a complexidade das relações tóxicas, e como o amor e o abuso muitas vezes coexistem em uma confusão de sentimentos.'),
-    LivroModel(
-        title: 'Vermelho Branco e Sangue Azul',
-        imageUrl: 'lib/assets/verm_branc_sangue_azul.jpg',
-        autor: 'Hunter, C. C',
-        anoPublicacao: '2018',
-        descricao:
-            'Leah MacKenzie, de 17 anos, não tem coração. O que a mantém viva é um coração artificial que ela carrega dentro de uma mochila. Com seu tipo sanguíneo raro, um transplante é como um sonho distante. Conformada, ela tenta se esquecer de que está com os dias contados, criando uma lista de “coisas para fazer antes de morrer”. De repente, Leah recebe uma segunda chance: há um coração disponível! O problema é quando ela descobre que o doador é um garoto da sua escola – e que supostamente se matou! Matt, o irmão gêmeo do doador, se recusa a acreditar que Eric se suicidou. Quando Leah o procura, eles descobrem que ambos têm sonhos semelhantes que podem ter pistas do que realmente aconteceu a Eric. Enquanto tentam desvendar esse mistério, Matt e Leah se apaixonam e não querem correr o risco de perder um ao outro. Mas nem a vida nem um coração transplantado vem com garantias. Quem diria que viver exige mais coragem do que morrer?'),
-  ];
+  List<LivroModel> livrosRomance = [];
+  List<LivroModel> livrosLtInfantil = [];
 
-  final List<LivroModel> livrosLtInfantil = [
-    LivroModel(
-        title: 'Diário de um banana',
-        imageUrl: 'lib/assets/diario_de_um_banana.jpg',
-        autor: 'Hunter, C. C',
-        anoPublicacao: '2018',
-        descricao:
-            'Leah MacKenzie, de 17 anos, não tem coração. O que a mantém viva é um coração artificial que ela carrega dentro de uma mochila. Com seu tipo sanguíneo raro, um transplante é como um sonho distante. Conformada, ela tenta se esquecer de que está com os dias contados, criando uma lista de “coisas para fazer antes de morrer”. De repente, Leah recebe uma segunda chance: há um coração disponível! O problema é quando ela descobre que o doador é um garoto da sua escola – e que supostamente se matou! Matt, o irmão gêmeo do doador, se recusa a acreditar que Eric se suicidou. Quando Leah o procura, eles descobrem que ambos têm sonhos semelhantes que podem ter pistas do que realmente aconteceu a Eric. Enquanto tentam desvendar esse mistério, Matt e Leah se apaixonam e não querem correr o risco de perder um ao outro. Mas nem a vida nem um coração transplantado vem com garantias. Quem diria que viver exige mais coragem do que morrer?'),
-    LivroModel(
-        title: 'O pequeno principe',
-        imageUrl: 'lib/assets/o_pequeno_principe.jpg',
-        autor: 'Hunter, C. C',
-        anoPublicacao: '2018',
-        descricao:
-            'Leah MacKenzie, de 17 anos, não tem coração. O que a mantém viva é um coração artificial que ela carrega dentro de uma mochila. Com seu tipo sanguíneo raro, um transplante é como um sonho distante. Conformada, ela tenta se esquecer de que está com os dias contados, criando uma lista de “coisas para fazer antes de morrer”. De repente, Leah recebe uma segunda chance: há um coração disponível! O problema é quando ela descobre que o doador é um garoto da sua escola – e que supostamente se matou! Matt, o irmão gêmeo do doador, se recusa a acreditar que Eric se suicidou. Quando Leah o procura, eles descobrem que ambos têm sonhos semelhantes que podem ter pistas do que realmente aconteceu a Eric. Enquanto tentam desvendar esse mistério, Matt e Leah se apaixonam e não querem correr o risco de perder um ao outro. Mas nem a vida nem um coração transplantado vem com garantias. Quem diria que viver exige mais coragem do que morrer?'),
-    LivroModel(
-        title: 'Turma da Monica',
-        imageUrl: 'lib/assets/turma_da_monica.jpg',
-        autor: 'Hunter, C. C',
-        anoPublicacao: '2018',
-        descricao:
-            'Leah MacKenzie, de 17 anos, não tem coração. O que a mantém viva é um coração artificial que ela carrega dentro de uma mochila. Com seu tipo sanguíneo raro, um transplante é como um sonho distante. Conformada, ela tenta se esquecer de que está com os dias contados, criando uma lista de “coisas para fazer antes de morrer”. De repente, Leah recebe uma segunda chance: há um coração disponível! O problema é quando ela descobre que o doador é um garoto da sua escola – e que supostamente se matou! Matt, o irmão gêmeo do doador, se recusa a acreditar que Eric se suicidou. Quando Leah o procura, eles descobrem que ambos têm sonhos semelhantes que podem ter pistas do que realmente aconteceu a Eric. Enquanto tentam desvendar esse mistério, Matt e Leah se apaixonam e não querem correr o risco de perder um ao outro. Mas nem a vida nem um coração transplantado vem com garantias. Quem diria que viver exige mais coragem do que morrer?'),
-  ];
+  void obterTodosLivros() async {
+    // Chame o serviço de autenticação aqui
+    final livroService = LivroService();
+    try {
+      var livros = await livroService.obterTodosLivros();
+      setState(() {
+        livrosRomance = livros.where((w) => w.genero == "Romance ").toList();
+        livrosLtInfantil =
+            livros.where((w) => w.genero == "Literatura infantil").toList();
+      });
+    } catch (e) {}
+  }
 
   @override
   Widget build(BuildContext context) {
+    obterTodosLivros();
+
     return Scaffold(
       backgroundColor: const Color(0xFFE8E0DD),
       appBar: PreferredSize(
@@ -132,17 +108,18 @@ class HomePage extends StatelessWidget {
                         itemCount: livrosRomance.length,
                         itemBuilder: (context, index) {
                           return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DetalhesLivroPage(
-                                      livro: livrosRomance[index],
-                                    ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetalhesLivroPage(
+                                    livro: livrosRomance[index],
                                   ),
-                                );
-                              },
-                              child: Livro(book: livrosRomance[index]));
+                                ),
+                              );
+                            },
+                            child: Livro(book: livrosRomance[index]),
+                          );
                         },
                       ),
                     ),
@@ -174,7 +151,19 @@ class HomePage extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemCount: livrosLtInfantil.length,
                         itemBuilder: (context, index) {
-                          return Livro(book: livrosLtInfantil[index]);
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetalhesLivroPage(
+                                    livro: livrosLtInfantil[index],
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Livro(book: livrosLtInfantil[index]),
+                          );
                         },
                       ),
                     ),

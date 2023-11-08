@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/', // Rota inicial
       title: 'Dream Books',
       routes: {
-        '/login': (context) => const LoginPage(), // Rota inicial
+        '/login': (context) => LoginPage(), // Rota inicial
         '/cadastro': (context) => const CadastroPage(), // Rota da cadastro
         '/home': (context) => HomePage(), // Rota da home
       },
