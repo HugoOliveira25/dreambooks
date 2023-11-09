@@ -23,11 +23,11 @@ class AdicionarCartaoPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 40.0),
                 child: Padding(
-                    padding: const EdgeInsets.only(left: 80, right: 80),
-                    // child: Image.asset(
-                    //   livro.capa,
-                    // ),
-                    child: Text(livro.autor)),
+                  padding: const EdgeInsets.only(left: 80, right: 80),
+                  child: Image.network(
+                    livro.capa,
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 25),

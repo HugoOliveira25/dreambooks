@@ -42,14 +42,16 @@ class LoginPage extends StatelessWidget {
                 Transform.scale(
                   scale: 1.5,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 300),
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).size.height * 0.27),
                     child: Image.asset(
                       'lib/assets/logo.png',
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 220),
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.34),
                   child: Container(
                     color: const Color(0xffe4d1ca),
                     child: Center(

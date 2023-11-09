@@ -19,10 +19,9 @@ class Livro extends StatelessWidget {
                 SizedBox(
                   width: 100,
                   height: 140,
-                  // child: Image.asset(
-                  //   book.capa,
-                  // ),
-                  child: Text(book.autor),
+                  child: Image.network(
+                    book.capa,
+                  ),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 7),

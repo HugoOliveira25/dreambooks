@@ -57,12 +57,6 @@ dev_dependencies:
 flutter:
   assets:
     - lib/assets/logo.png
-    - lib/assets/e_assim_que_acaba.jpg
-    - lib/assets/eu_e_esse_meu_coracao.jpg
-    - lib/assets/verm_branc_sangue_azul.jpg
-    - lib/assets/diario_de_um_banana.jpg
-    - lib/assets/o_pequeno_principe.jpg
-    - lib/assets/turma_da_monica.jpg
     - lib/assets/credit-card.png
     - lib/assets/debit-card.png
     - lib/assets/cash.png

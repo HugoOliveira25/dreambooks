@@ -28,7 +28,8 @@ class FinalizarPedidoPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 205),
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.30),
                   child: Container(
                     color: const Color(0xffe4d1ca),
                     child: Center(

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Dream Books',
       routes: {
         '/login': (context) => LoginPage(), // Rota inicial
-        '/cadastro': (context) => const CadastroPage(), // Rota da cadastro
+        '/cadastro': (context) => CadastroPage(), // Rota da cadastro
         '/home': (context) => HomePage(), // Rota da home
       },
       home: const MyHomePage(title: 'Dream Books'),

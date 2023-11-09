@@ -8,7 +8,7 @@ class LivroModel {
   String iSBN = '';
   String descricao = '';
   String quantidade = '';
-  String? capa = '';
+  String capa = '';
 
   LivroModel(
       {required this.id,
