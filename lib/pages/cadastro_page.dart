@@ -44,10 +44,10 @@ class CadastroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFB27666),
+      backgroundColor: const Color(0xffe4d1ca),
       appBar: AppBar(
         title: const Text(''),
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xFFB27666),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -61,7 +61,7 @@ class CadastroPage extends StatelessWidget {
                       scale: 1.60,
                       child: Padding(
                         padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).size.height * 0.40),
+                            bottom: MediaQuery.of(context).size.height * 0.35),
                         child: Image.asset(
                           'lib/assets/logo.png',
                         ),
@@ -71,23 +71,23 @@ class CadastroPage extends StatelessWidget {
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.27),
                       child: Container(
-                        height: MediaQuery.of(context).size.height * 0.632,
+                        height: MediaQuery.of(context).size.height * 0.60,
                         color: const Color(0xffe4d1ca),
                         child: Center(
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 20, left: 20),
+                            padding: const EdgeInsets.only(
+                              right: 20,
+                              left: 20,
+                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Padding(
-                                      padding: EdgeInsets.only(
-                                        bottom: 8,
-                                        top: 8,
-                                        right: 180,
-                                      ),
+                                      padding:
+                                          EdgeInsets.only(bottom: 8, top: 8),
                                       child: Text(
                                         'DIGITE SEU NOME:', // Texto do rótulo
                                         style: TextStyle(
@@ -126,13 +126,12 @@ class CadastroPage extends StatelessWidget {
                                   ],
                                 ),
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Padding(
                                       padding: EdgeInsets.only(
                                         bottom: 8,
                                         top: 8,
-                                        right: 195,
                                       ),
                                       child: Text(
                                         'DIGITE SEU CPF:', // Texto do rótulo
@@ -175,13 +174,12 @@ class CadastroPage extends StatelessWidget {
                                   padding: const EdgeInsets.only(top: 4),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Padding(
                                         padding: EdgeInsets.only(
                                           bottom: 8,
                                           top: 8,
-                                          right: 170,
                                         ),
                                         child: Text(
                                           'DIGITE SEU E-MAIL:',
@@ -223,14 +221,11 @@ class CadastroPage extends StatelessWidget {
                                   padding: const EdgeInsets.only(top: 3),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Padding(
-                                        padding: EdgeInsets.only(
-                                          bottom: 8,
-                                          top: 8,
-                                          right: 170,
-                                        ),
+                                        padding:
+                                            EdgeInsets.only(bottom: 8, top: 8),
                                         child: Text(
                                           'DIGITE SUA SENHA:',
                                           style: TextStyle(
@@ -272,14 +267,11 @@ class CadastroPage extends StatelessWidget {
                                   padding: const EdgeInsets.only(top: 3),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Padding(
-                                        padding: EdgeInsets.only(
-                                          bottom: 8,
-                                          top: 8,
-                                          right: 150,
-                                        ),
+                                        padding:
+                                            EdgeInsets.only(bottom: 8, top: 8),
                                         child: Text(
                                           'CONFIRME SUA SENHA:',
                                           style: TextStyle(
@@ -319,7 +311,7 @@ class CadastroPage extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      top: 10, bottom: 10),
+                                      top: 30, bottom: 10),
                                   child: ElevatedButton(
                                     onPressed: () async {
                                       var result =
