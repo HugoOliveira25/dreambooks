@@ -102,7 +102,7 @@ class DetalhesLivroPage extends StatelessWidget {
                     ),
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text('Fazer pedido',
+                  child: const Text('FAZER PEDIDO',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

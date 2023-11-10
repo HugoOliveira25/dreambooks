@@ -339,7 +339,7 @@ class CadastroPage extends StatelessWidget {
                                       ),
                                       minimumSize: const Size(200, 50),
                                     ),
-                                    child: const Text('Cadastrar',
+                                    child: const Text('CADASTRAR',
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,

@@ -24,8 +24,10 @@ class AuthService {
       var data = json.decode(response.body);
       String token = data['data']['token'];
       String idUsuario = data['data']['id'];
+      String emailUsuario = data['data']['email'];
       await tokenService.setToken(token);
       await tokenService.setIdUsuario(idUsuario);
+      await tokenService.setEmailUsuario(emailUsuario);
       return token;
     } else {
       throw Exception('Erro na solicitação: ${response.statusCode}');

@@ -98,7 +98,7 @@ class FinalizarPedidoPage extends StatelessWidget {
                                   ),
                                   minimumSize: const Size(200, 50),
                                 ),
-                                child: const Text('Voltar para home',
+                                child: const Text('VOLTAR PARA HOME',
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,

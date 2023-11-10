@@ -144,7 +144,7 @@ class _FormaPagamentoPageState extends State<FormaPagamentoPage> {
                     ),
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text('Finalizar pedido',
+                  child: const Text('FINALIZAR PEDIDO',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

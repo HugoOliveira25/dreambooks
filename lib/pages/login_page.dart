@@ -78,7 +78,7 @@ class LoginPage extends StatelessWidget {
                                 const Padding(
                                   padding: EdgeInsets.all(8.0),
                                   child: Text(
-                                    'DIGITE SEU EM-MAIL:', // Texto do rótulo
+                                    'DIGITE SEU E-MAIL:', // Texto do rótulo
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         color: Color(
@@ -164,7 +164,7 @@ class LoginPage extends StatelessWidget {
                                 ),
                                 minimumSize: const Size(200, 50),
                               ),
-                              child: const Text('Entrar',
+                              child: const Text('ENTRAR',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,

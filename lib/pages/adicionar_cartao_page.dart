@@ -83,7 +83,7 @@ class AdicionarCartaoPage extends StatelessWidget {
                     ),
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text('Forma de pagamento',
+                  child: const Text('FORMA DE PAGAMENTO',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -101,7 +101,7 @@ class AdicionarCartaoPage extends StatelessWidget {
                     ),
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text('Finalizar pedido',
+                  child: const Text('FINALIZAR PEDIDO',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
