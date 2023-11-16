@@ -53,6 +53,16 @@ class AuthenticationService {
     return prefs.getString('email_usuario');
   }
 
+  Future<void> setEnderecoId(String enderecoId) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('endereco_id', enderecoId);
+  }
+
+  Future<String?> getEnderecoId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('endereco_id');
+  }
+
   Future<void> removeToken() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(tokenKey);

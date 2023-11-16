@@ -459,7 +459,7 @@ Drawer buildDrawer(BuildContext context, String nome, String email) {
             style: TextStyle(color: Colors.white),
           ),
           onTap: () {
-            Navigator.pushNamed(context, '/perfil');
+            Navigator.pushNamed(context, '/enderecos');
           },
         ),
         ListTile(

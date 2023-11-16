@@ -1,3 +1,4 @@
+import 'package:dreambooks/services/token_service.dart';
 import 'package:flutter/material.dart';
 
 import '../models/livro_model.dart';
@@ -14,7 +15,16 @@ class PerfilPage extends StatefulWidget {
 class _PerfilPageState extends State<PerfilPage> {
   List<LivroModel> livrosRomance = [];
 
+  String nomeUsuario = "";
+  String emailUsuario = "";
+
   void obterTodosLivros() async {
+    final authService = AuthenticationService();
+    var nome = await authService.getNomeUsuario();
+    var email = await authService.getEmailUsuario();
+    nomeUsuario = nome.toString();
+    emailUsuario = email.toString();
+
     final livroService = LivroService();
     try {
       var livros = await livroService.obterTodosLivros();
@@ -59,17 +69,17 @@ class _PerfilPageState extends State<PerfilPage> {
                     ),
                   ),
                   const SizedBox(height: 20.0),
-                  const Text(
-                    'Seu Nome',
-                    style: TextStyle(
+                  Text(
+                    nomeUsuario,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Text(
-                    'seu_email@example.com',
-                    style: TextStyle(
+                  Text(
+                    emailUsuario,
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),

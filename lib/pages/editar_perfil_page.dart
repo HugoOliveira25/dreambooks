@@ -4,7 +4,7 @@ import '../services/cadastro_service.dart';
 import '../services/token_service.dart';
 
 class EditarPerfilPage extends StatefulWidget {
-  EditarPerfilPage({super.key});
+  const EditarPerfilPage({super.key});
 
   @override
   State<EditarPerfilPage> createState() => _EditarPerfilPage();

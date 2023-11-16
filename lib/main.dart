@@ -1,4 +1,6 @@
 import 'package:dreambooks/pages/editar_perfil_page.dart';
+import 'package:dreambooks/pages/endereco_editar_page.dart';
+import 'package:dreambooks/pages/endereco_page.dart';
 import 'package:dreambooks/pages/perfil_page.dart';
 import 'package:flutter/material.dart';
 
@@ -22,10 +24,12 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginPage(), // Rota inicial
         '/cadastro': (context) => CadastroPage(), // Rota de cadastro
-        '/home': (context) => HomePage(),
+        '/home': (context) => const HomePage(),
         '/perfil': (context) => const PerfilPage(),
-        '/perfil-editar': (context) =>
-            EditarPerfilPage(), // Rota de editar perfil
+        '/perfil-editar': (context) => const EditarPerfilPage(),
+        '/enderecos': (context) => const EnderecoPage(),
+        '/endereco-editar': (context) =>
+            EnderecoEditarPage() // Rota de endereços
       },
       home: const MyHomePage(title: 'Dream Books'),
       debugShowCheckedModeBanner: false,

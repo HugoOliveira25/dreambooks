@@ -25,9 +25,13 @@ class AuthService {
       String token = data['data']['token'];
       String idUsuario = data['data']['id'];
       String emailUsuario = data['data']['email'];
+      String nomeUsuario = data['data']['nome'];
+      String telefoneUsuario = data['data']['telefone'];
       await tokenService.setToken(token);
       await tokenService.setIdUsuario(idUsuario);
       await tokenService.setEmailUsuario(emailUsuario);
+      await tokenService.setNomeUsuario(nomeUsuario);
+      await tokenService.setTelefoneUsuario(telefoneUsuario);
       return token;
     } else {
       throw Exception('Erro na solicitação: ${response.statusCode}');
