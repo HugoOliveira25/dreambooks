@@ -72,7 +72,7 @@ class FinalizarPedidoPage extends StatelessWidget {
                               ),
                             ),
                             const Text(
-                              'Assim que seu prazo terminar  um motoboy será enviado em seu endereço para a devolução, obrigado por utilizar nosso serviços!!',
+                              'Assim que seu prazo terminar, um motoboy será enviado em seu endereço para a devolução, obrigado por utilizar nossos serviços!!',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 18,

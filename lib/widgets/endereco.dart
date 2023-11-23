@@ -24,8 +24,7 @@ class _EnderecoState extends State<Endereco> {
 
     final cadastroService = EnderecoService();
     try {
-      var endereco =
-          await cadastroService.excluirEndereco(enderecoId.toString());
+      await cadastroService.excluirEndereco(enderecoId.toString());
       showSucessoDialog(context, "Endereço excluído com sucesso");
       return "";
     } catch (e) {

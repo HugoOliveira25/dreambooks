@@ -199,6 +199,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 decoration: const InputDecoration(
                   hintText: 'Buscar',
+                  contentPadding: EdgeInsets.only(top: 14),
                   prefixIcon: Icon(Icons.search),
                   border: InputBorder.none,
                 ),
@@ -444,7 +445,7 @@ Drawer buildDrawer(BuildContext context, String nome, String email) {
               ),
             ),
             child: const CircleAvatar(
-              backgroundImage: AssetImage('lib/assets/logo.png'),
+              backgroundImage: AssetImage('lib/assets/foto_perfil.jpeg'),
             ),
           ),
           decoration: const BoxDecoration(color: Color(0xFFC69385)),

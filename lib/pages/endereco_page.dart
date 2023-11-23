@@ -1,10 +1,7 @@
 import 'package:dreambooks/services/endereco_service.dart';
 import 'package:dreambooks/widgets/endereco.dart';
 import 'package:flutter/material.dart';
-
 import '../models/endereco_model.dart';
-import '../services/cadastro_service.dart';
-import '../services/token_service.dart';
 
 class EnderecoPage extends StatefulWidget {
   const EnderecoPage({super.key});

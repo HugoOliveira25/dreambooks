@@ -88,6 +88,56 @@ class EnderecoService {
     }
   }
 
+  Future<EnderecoModel> inserirEndereco(
+      String rua,
+      String numero,
+      String bairro,
+      String cidade,
+      String uf,
+      String cep,
+      String estado) async {
+    final tokenService = AuthenticationService();
+
+    final Map<String, dynamic> dadosEndereco = {
+      "rua": rua,
+      "numero": numero,
+      "cidade": cidade,
+      "bairro": bairro,
+      "estado": estado,
+      "uf": uf,
+      "complemento": "",
+      "cep": cep,
+      "principal": 0
+    };
+
+    var token = await tokenService.getToken();
+
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {'Content-Type': 'application/json', 'token': token.toString()},
+      body: jsonEncode(dadosEndereco),
+    );
+
+    if (response.statusCode == 200) {
+      var endereco = EnderecoModel(
+          id: json.decode(response.body)['data']['id'].toString(),
+          rua: json.decode(response.body)['data']['rua'],
+          id_usuario: '',
+          cidade: json.decode(response.body)['data']['cidade'],
+          bairro: json.decode(response.body)['data']['bairro'],
+          uf: json.decode(response.body)['data']['uf'],
+          numero: json.decode(response.body)['data']['numero'],
+          complemento: '',
+          estado: '',
+          cep: '',
+          principal: '');
+
+      return endereco;
+    } else {
+      throw Exception('Erro na solicitação: ${response.statusCode}');
+    }
+  }
+
   Future<List<EnderecoModel>> excluirEndereco(String enderecoId) async {
     final tokenService = AuthenticationService();
 

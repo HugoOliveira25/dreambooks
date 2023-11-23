@@ -67,4 +67,85 @@ class AuthenticationService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(tokenKey);
   }
+
+  Future<void> setLivroFavorito(String livroId) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    var idsLivrosFavoritos = await getLivroFavorito();
+
+    if (idsLivrosFavoritos != null && idsLivrosFavoritos.isNotEmpty) {
+      var existemItem =
+          idsLivrosFavoritos.where((element) => element == livroId);
+      if (existemItem.isEmpty) {
+        idsLivrosFavoritos.add(livroId);
+        await prefs.setStringList('ids_livros', idsLivrosFavoritos);
+      }
+    } else {
+      List<String> novaLista = [];
+      novaLista.add(livroId);
+      await prefs.setStringList('ids_livros', novaLista);
+    }
+  }
+
+  Future<void> removerLivroFavorito(String livroId) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    var idsLivrosFavoritos = await getLivroFavorito();
+
+    if (idsLivrosFavoritos != null && idsLivrosFavoritos.isNotEmpty) {
+      var existemItem =
+          idsLivrosFavoritos.firstWhere((element) => element == livroId);
+
+      if (existemItem != '') {
+        idsLivrosFavoritos.remove(existemItem);
+        await prefs.setStringList('ids_livros', idsLivrosFavoritos);
+      }
+    } else {
+      var novaLista = List<String>.empty();
+      await prefs.setStringList('ids_livros', novaLista);
+    }
+  }
+
+  Future<void> setNota(String nota) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    var notas = await getNotas();
+
+    if (notas != null && notas.isNotEmpty) {
+      notas.add(nota);
+      await prefs.setStringList('notas', notas);
+    } else {
+      List<String> novaLista = [];
+      novaLista.add(nota);
+      await prefs.setStringList('notas', novaLista);
+    }
+  }
+
+  Future<void> removerNota(String nota) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    var notas = await getNotas();
+
+    if (notas != null && notas.isNotEmpty) {
+      var existemItem = notas.where((element) => element == nota);
+
+      if (existemItem.isNotEmpty) {
+        notas.remove(existemItem.first);
+        await prefs.setStringList('notas', notas);
+      }
+    } else {
+      var novaLista = List<String>.empty();
+      await prefs.setStringList('notas', novaLista);
+    }
+  }
+
+  Future<List<String>?> getLivroFavorito() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList('ids_livros');
+  }
+
+  Future<List<String>?> getNotas() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList('notas');
+  }
 }

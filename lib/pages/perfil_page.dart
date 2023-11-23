@@ -13,13 +13,14 @@ class PerfilPage extends StatefulWidget {
 }
 
 class _PerfilPageState extends State<PerfilPage> {
-  List<LivroModel> livrosRomance = [];
+  List<LivroModel> livrosFavoritos = [];
+  List<String> notasLista = [];
+  final authService = AuthenticationService();
 
   String nomeUsuario = "";
   String emailUsuario = "";
 
-  void obterTodosLivros() async {
-    final authService = AuthenticationService();
+  void obterLivrosFavoritos() async {
     var nome = await authService.getNomeUsuario();
     var email = await authService.getEmailUsuario();
     nomeUsuario = nome.toString();
@@ -28,15 +29,50 @@ class _PerfilPageState extends State<PerfilPage> {
     final livroService = LivroService();
     try {
       var livros = await livroService.obterTodosLivros();
-      setState(() {
-        livrosRomance = livros.where((w) => w.genero == "Romance ").toList();
-      });
+      var idsLivrosFavoritos = await authService.getLivroFavorito();
+
+      if (idsLivrosFavoritos != null) {
+        setState(() {
+          for (var element in livros) {
+            for (var id in idsLivrosFavoritos) {
+              if (id == element.id) {
+                livrosFavoritos.add(element);
+              }
+            }
+          }
+        });
+      }
+
+      var notas = await authService.getNotas();
+
+      if (notas != null) {
+        setState(() {
+          notasLista = notas;
+        });
+      }
+    } catch (e) {}
+  }
+
+  void obterNotas() async {
+    try {
+      var notas = await authService.getNotas();
+
+      if (notas != null) {
+        setState(() {
+          notasLista = notas;
+        });
+      }
     } catch (e) {}
   }
 
   @override
+  void initState() {
+    super.initState();
+    obterLivrosFavoritos();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    obterTodosLivros();
     return Scaffold(
       backgroundColor: const Color(0xFFE8E0DD),
       appBar: AppBar(
@@ -65,10 +101,11 @@ class _PerfilPageState extends State<PerfilPage> {
                     ),
                     child: const CircleAvatar(
                       radius: 60.0,
-                      backgroundImage: AssetImage('lib/assets/logo.png'),
+                      backgroundImage:
+                          AssetImage('lib/assets/foto_perfil.jpeg'),
                     ),
                   ),
-                  const SizedBox(height: 20.0),
+                  const SizedBox(height: 10.0),
                   Text(
                     nomeUsuario,
                     style: const TextStyle(
@@ -97,31 +134,34 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 5),
                         child: Container(
                           color: Colors.white,
-                          height: 205,
+                          height: 200,
                           child: Padding(
                             padding: const EdgeInsets.only(top: 15, bottom: 15),
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: livrosRomance.length,
-                              itemBuilder: (context, index) {
-                                return InkWell(
-                                  onTap: () {},
-                                  child: Livro(
-                                      book: livrosRomance[index],
-                                      showDisponivel: false),
-                                );
-                              },
-                            ),
+                            child: livrosFavoritos.isNotEmpty
+                                ? ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: livrosFavoritos.length,
+                                    itemBuilder: (context, index) {
+                                      return InkWell(
+                                        onTap: () {},
+                                        child: Livro(
+                                            book: livrosFavoritos[index],
+                                            showDisponivel: false),
+                                      );
+                                    },
+                                  )
+                                : const Center(
+                                    child: Text('Nenhum livro favorito!')),
                           ),
                         ),
                       ),
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 25),
+                    padding: const EdgeInsets.only(top: 20),
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/perfil-editar');
@@ -140,6 +180,114 @@ class _PerfilPageState extends State<PerfilPage> {
                           )),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/notas');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFB27666),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        minimumSize: const Size(200, 50),
+                      ),
+                      child: const Text('ADICIONAR NOTA',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: notasLista.isNotEmpty
+                        ? const Text(
+                            'Notas',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(178, 118, 102, 1.0),
+                            ),
+                          )
+                        : null,
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(top: 1),
+                      child: notasLista.isNotEmpty
+                          ? Container(
+                              height: 400,
+                              child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: notasLista.length,
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () {},
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20,
+                                          right: 20,
+                                          top: 10,
+                                          bottom: 10),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: const Color.fromRGBO(178,
+                                                118, 102, 1.0), // Cor da borda
+                                            width: 2.0, // Espessura da borda
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 5),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(15),
+                                                  child: Text(
+                                                    notasLista[index],
+                                                    style: const TextStyle(
+                                                      color: Color.fromRGBO(
+                                                          178, 118, 102, 1.0),
+                                                    ),
+                                                    softWrap: true,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 8.0),
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    await authService
+                                                        .removerNota(
+                                                            notasLista[index]);
+                                                    setState(() {
+                                                      obterNotas();
+                                                    });
+                                                  },
+                                                  child: const Icon(
+                                                    Icons.delete,
+                                                    color: Color.fromRGBO(
+                                                        178, 118, 102, 1.0),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            )
+                          : null),
                 ],
               ),
             ),

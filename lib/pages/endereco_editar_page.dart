@@ -1,6 +1,5 @@
 import 'package:dreambooks/services/endereco_service.dart';
 import 'package:flutter/material.dart';
-import '../models/endereco_model.dart';
 import '../services/token_service.dart';
 
 class EnderecoEditarPage extends StatefulWidget {

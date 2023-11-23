@@ -79,7 +79,8 @@ class _EditarPerfilPage extends State<EditarPerfilPage> {
                       ),
                       child: const CircleAvatar(
                         radius: 60.0,
-                        backgroundImage: AssetImage('lib/assets/logo.png'),
+                        backgroundImage:
+                            AssetImage('lib/assets/foto_perfil.jpeg'),
                       ),
                     ),
                   ),
