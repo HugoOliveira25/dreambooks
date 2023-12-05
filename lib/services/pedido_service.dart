@@ -3,7 +3,7 @@ import 'package:dreambooks/services/token_service.dart';
 import 'package:http/http.dart' as http;
 
 class PedidoService {
-  static const String apiUrl = 'http://18.231.43.77/api/books/stock';
+  static const String apiUrl = 'http://18.231.43.77/api/order/';
 
   Future<dynamic> salvarPedido(String idLivro, String formaPagamento) async {
     final tokenService = AuthenticationService();
@@ -19,7 +19,11 @@ class PedidoService {
       "dataDevolucao": dataDevolucao.toString(),
       "qtd_itens": "1",
       "itens": [
-        {"idlivro": idLivro, "quantidade": 1}
+        {
+          "id_livro": idLivro,
+          "quantidade": 1,
+          "observacao": "",
+        }
       ]
     };
 
